@@ -18,7 +18,11 @@ public class Module {
         this.lampreyOffset=lampreyOffset;
     }
     public double getModuleHeading(){
-        return lamprey.getVoltage()*360/3.3-0;
+        double before_mod = lamprey.getVoltage()*360/2.189-this.lampreyOffset;
+        if (before_mod<0){
+            return before_mod+360;
+        }
+        return before_mod;
     }
     public void setMotors(double topPower, double bottomPower){
         topMotor.set(topPower);
